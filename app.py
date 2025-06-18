@@ -10,7 +10,7 @@ from sanic.exceptions import NotFound
 from jinja2 import Environment, FileSystemLoader
 
 from core.models import LogEntry
-
+botname os.getenv("BOT_NAME")
 load_dotenv()
 
 if "URL_PREFIX" in os.environ:
@@ -63,7 +63,7 @@ def strtobool(val):
 
 @app.listener("before_server_start")
 async def init(app, loop):
-    app.ctx.db = AsyncIOMotorClient(MONGO_URI).modmail_bot
+    app.ctx.db = AsyncIOMotorClient(MONGO_URI)[botname]
     use_attachment_proxy = strtobool(os.getenv("USE_ATTACHMENT_PROXY", "no"))
     if use_attachment_proxy:
         app.ctx.attachment_proxy_url = os.getenv("ATTACHMENT_PROXY_URL", "https://cdn.discordapp.xyz")
