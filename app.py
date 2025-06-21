@@ -10,7 +10,7 @@ from sanic.exceptions import NotFound
 from jinja2 import Environment, FileSystemLoader
 
 from core.models import LogEntry
-botname os.getenv("BOT_NAME")
+botname = os.getenv("BOT_NAME")
 load_dotenv()
 
 if "URL_PREFIX" in os.environ:
